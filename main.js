@@ -35,13 +35,12 @@ function actualizarTabla() {
             <td>${serie.id}</td>
             <td>${serie.nombre}</td>
             <td>${serie.canal}</td>
-            <td>${serie.temporadas}</td>
-            <td>${serie.descripcion}</td>`;
+            <td>${serie.temporadas}</td>`;
         tbody.appendChild(tr);
     });
     const trPromedio = document.createElement("tr");
     trPromedio.innerHTML = `
-            <td colspan="3">Promedio de temporadas:</td>
+            <td >Promedio de temporadas:</td>
             <td>${promedioTemporadas}</td>
             <td></td>`;
     tbody.appendChild(trPromedio);
