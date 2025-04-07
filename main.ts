@@ -50,10 +50,10 @@ function actualizarTabla(): void {
     series.forEach((serie) => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-            <td>${serie.id}</td>
-            <td>${serie.nombre}</td>
-            <td>${serie.canal}</td>
-            <td>${serie.temporadas}</td>`;
+                    <td>${serie.id}</td>
+                    <td><a href="${serie.pagina}">${serie.nombre}</a></td>
+                    <td>${serie.canal}</td>
+                    <td>${serie.temporadas}</td>`;
         tbody.appendChild(tr);
     });
         const trPromedio = document.createElement("tr");
