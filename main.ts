@@ -41,6 +41,22 @@ function promedio(): number {
     return suma / series.length;
 }
 
+function renderizarCard(Serie: Serie): void {
+    const cardContainer = document.getElementById("card1");
+    if (!cardContainer) {
+      console.error("No se encontró el contenedor de la card");
+      return;
+    }
+    cardContainer.innerHTML = `
+    <img class="card-img-top" src=${Serie.imagen} alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">${Serie.nombre}</h5>
+    <p class="card-text">${Serie.descripcion}</p>
+    <a href="${Serie.pagina}" class="btn btn-primary" target="_blank">ir a la pagina</a>
+  </div>
+  `;
+}
+
 function actualizarTabla(): void {
     const tbody = document.querySelector("#table1 tbody") as HTMLTableSectionElement;
 
@@ -51,10 +67,16 @@ function actualizarTabla(): void {
         const tr = document.createElement("tr");
         tr.innerHTML = `
                     <td>${serie.id}</td>
-                    <td><a href="${serie.pagina}">${serie.nombre}</a></td>
+                    <td><a href="#" class="serie-link">${serie.nombre}</a></td>
                     <td>${serie.canal}</td>
                     <td>${serie.temporadas}</td>`;
         tbody.appendChild(tr);
+
+        const serieLink = tr.querySelector(".serie-link") as HTMLAnchorElement;
+        serieLink.addEventListener("click", (event) => {
+            event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
+            renderizarCard(serie);
+        });
     });
         const trPromedio = document.createElement("tr");
         trPromedio.innerHTML = `
@@ -62,9 +84,8 @@ function actualizarTabla(): void {
             <td>${promedioTemporadas}</td>
             <td></td>`;
         tbody.appendChild(trPromedio);
+    
 
-    
-    
 }
 
 
